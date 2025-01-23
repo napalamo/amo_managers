@@ -47,6 +47,7 @@ def send_data(data_list):
     reverse_column_names = {
         'Имя Менедежра': 'name', 
         'Активен': 'is_active',
+        'ID чата':'chat_id',
         'Лимит лидов': 'lead_count',
         'Лимит Топ': 'top_lead_count', 
         'Топ': 'is_distribute_top_leads',     
