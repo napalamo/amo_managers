@@ -31,7 +31,8 @@ def show():
         if 'name' in manager and 'id' in manager:
             manager_name = manager['name']
             manager_id = manager['id']
-            link = f"https://working-hours-3roks8e83ey4jh9hcjs8vc.streamlit.app?manager_id={manager_id}"
+            link = f"https://working-hours-lifestylegroup2jhgjh.streamlit.app?manager_id={manager_id}"
+            #link = f"<a href='https://working-hours-lifestylegroup2jhgjh.streamlit.app?manager_id={manager_id}' target='_blank' rel='noopener noreferrer'>https://working-hours-lifestylegroup2jhgjh.streamlit.app?manager_id={manager_id}</a>"
             table_data.append({'Имя менеджера': manager_name, 'Ссылка': link})
     
     # Создание DataFrame для отображения в таблице
