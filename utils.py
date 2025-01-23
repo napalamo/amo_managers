@@ -17,7 +17,7 @@ def fetch_data():
     if response.status_code == 200:
         df = pd.DataFrame(response.json())
         df.rename(columns={
-            'name': 'Имя Менедежра', 
+            'name': 'Имя Менеджера', 
             'chat_id':'ID чата', 
             'is_active': 'Активен', 
             'lead_count': 'Лимит лидов', 
