@@ -18,7 +18,7 @@ def fetch_data():
         df = pd.DataFrame(response.json())
         df.rename(columns={
             'name': 'Имя Менедежра', 
-            'chat_id':'ID чата',
+            'chat_id':'ID чата', 
             'is_active': 'Активен', 
             'lead_count': 'Лимит лидов', 
             'top_lead_count': 'Лимит Топ',
