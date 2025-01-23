@@ -45,7 +45,7 @@ def send_data(data_list):
 
     # Словарь для обратного переименования
     reverse_column_names = {
-        'Имя Менедежра': 'name', 
+        'Имя Менеджера': 'name', 
         'Активен': 'is_active',
         'ID чата':'chat_id',
         'Лимит лидов': 'lead_count',
@@ -66,7 +66,7 @@ def send_data(data_list):
     # Отправляем обновлённые данные
     # Сериализуем список словарей в строку JSON
     json_data = json.dumps(updated_data_list)
-
+    return st.success(json_data)
     # Отправляем строку JSON как form-data
     response = requests.post(API_UPDATE_URL, data={'data': json_data})
 
