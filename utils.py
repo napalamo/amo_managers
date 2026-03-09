@@ -7,10 +7,11 @@ import json
 
 def load_env_variables():
     load_dotenv()
-    global API_FETCH_URL, API_UPDATE_URL, API_ANALYTICS_URL
+    global API_FETCH_URL, API_UPDATE_URL, API_ANALYTICS_URL, API_FORCE_URL
     API_FETCH_URL = os.getenv('API_FETCH_URL')
     API_UPDATE_URL = os.getenv('API_UPDATE_URL')
     API_ANALYTICS_URL = os.getenv('API_ANALUTICS_URL')
+    API_FORCE_URL = os.getenv('API_FORCE_URL')
 
 def fetch_data():
     response = requests.post(API_FETCH_URL)
@@ -26,9 +27,11 @@ def fetch_data():
             'top_men_lead_count': 'Лимит Топ Муж', 
             'is_distribute_top_men_leads': 'Топ Муж', 
             'is_allow_over_limit': 'Превышать лимит',
-            'timezone': 'Часовой пояс'
-        }, inplace=True)
-        df['Активен'] = df['Активен'].astype(bool)       
+            'timezone': 'Часовой пояс',
+            'month': 'Месяц',
+            'plan': 'План',
+            'fact': 'Факт'
+        }, inplace=True)        df['Активен'] = df['Активен'].astype(bool)       
         df['Превышать лимит'] = df['Превышать лимит'].astype(bool)
         df['Топ'] = df['Топ'].astype(bool)
         df['Топ Муж'] = df['Топ Муж'].astype(bool) 
@@ -54,9 +57,11 @@ def send_data(data_list):
         'Лимит Топ Муж': 'top_men_lead_count',
         'Топ Муж': 'is_distribute_top_men_leads',
         'Превышать лимит': 'is_allow_over_limit',
-        'Часовой пояс': 'timezone'
+        'Часовой пояс': 'timezone',
+        'Месяц': 'month',
+        'План': 'plan',
+        'Факт': 'fact'
     }
-
     # Обновляем ключи в каждом словаре в списке
     updated_data_list = []
     for item in data_list:
@@ -93,3 +98,9 @@ def fetch_statistics(start_date, end_date, type_lead):
         st.error('Ошибка при получении статистики')
         return None
       
+def mustAssigment():
+    response = requests.post(API_FORCE_URL)
+    if response.status_code == 200:
+        st.success('Принудительное распределение запущено')
+    else:
+        st.error('Ошибка при запуске распределения')
