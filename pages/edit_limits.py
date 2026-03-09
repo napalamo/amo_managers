@@ -7,14 +7,13 @@ def show():
 
     col1, col2 = st.columns(2)
     with col1:
-        if st.button('Обновить список менеджеров', use_container_width=True):
+        if st.button('Обновить список менеджеров'):
             data = fetch_data()
             st.session_state['data'] = data
             st.session_state['original_data'] = data.copy()
     with col2:
-        if st.button('Принудительное распределение', use_container_width=True):
+        if st.button('Принудительное распределение'):
             mustAssigment()
-
     if 'data' in st.session_state:        # Убираем колонку id для отображения
         data_to_display = st.session_state['data'].drop(columns=['id'])
         
