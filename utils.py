@@ -22,7 +22,7 @@ def fetch_data():
             'chat_id':'ID чата', 
             'month': 'Месяц',
             'plan': 'План',
-            'fact': 'Факт'
+            'fact': 'Факт',
             'is_active': 'Активен', 
             'lead_count': 'Лимит лидов', 
             'top_lead_count': 'Лимит Топ',
@@ -30,10 +30,8 @@ def fetch_data():
             'top_men_lead_count': 'Лимит Топ Муж', 
             'is_distribute_top_men_leads': 'Топ Муж', 
             'is_allow_over_limit': 'Превышать лимит',
-            'timezone': 'Часовой пояс',
-    
-        }, inplace=True)
-        df['Активен'] = df['Активен'].astype(bool)
+            'timezone': 'Часовой пояс'
+        }, inplace=True)        df['Активен'] = df['Активен'].astype(bool)
         df['Превышать лимит'] = df['Превышать лимит'].astype(bool)
         df['Топ'] = df['Топ'].astype(bool)
         df['Топ Муж'] = df['Топ Муж'].astype(bool) 
