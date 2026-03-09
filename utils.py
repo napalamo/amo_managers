@@ -20,6 +20,9 @@ def fetch_data():
         df.rename(columns={
             'name': 'Имя Менеджера', 
             'chat_id':'ID чата', 
+            'month': 'Месяц',
+            'plan': 'План',
+            'fact': 'Факт'
             'is_active': 'Активен', 
             'lead_count': 'Лимит лидов', 
             'top_lead_count': 'Лимит Топ',
@@ -28,9 +31,7 @@ def fetch_data():
             'is_distribute_top_men_leads': 'Топ Муж', 
             'is_allow_over_limit': 'Превышать лимит',
             'timezone': 'Часовой пояс',
-            'month': 'Месяц',
-            'plan': 'План',
-            'fact': 'Факт'
+    
         }, inplace=True)
         df['Активен'] = df['Активен'].astype(bool)
         df['Превышать лимит'] = df['Превышать лимит'].astype(bool)

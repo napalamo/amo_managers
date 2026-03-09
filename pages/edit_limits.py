@@ -13,7 +13,10 @@ def show():
             st.session_state['original_data'] = data.copy()
     with col2:
         if st.button('Принудительное распределение'):
-            mustAssigment()    if 'data' in st.session_state:        # Убираем колонку id для отображения
+            mustAssigment()
+
+    if 'data' in st.session_state:
+        # Убираем колонку id для отображения
         data_to_display = st.session_state['data'].drop(columns=['id'])
         
         # Рассчитываем высоту на основе количества строк в данных
