@@ -5,7 +5,7 @@ from utils import fetch_data, send_data, find_changes, mustAssigment
 def show():
     st.title('Управление списком менеджеров')
 
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns([1, 1, 2])
     with col1:
         if st.button('Обновить список менеджеров'):
             data = fetch_data()
@@ -13,8 +13,7 @@ def show():
             st.session_state['original_data'] = data.copy()
     with col2:
         if st.button('Принудительное распределение'):
-            mustAssigment()
-    if 'data' in st.session_state:        # Убираем колонку id для отображения
+            mustAssigment()    if 'data' in st.session_state:        # Убираем колонку id для отображения
         data_to_display = st.session_state['data'].drop(columns=['id'])
         
         # Рассчитываем высоту на основе количества строк в данных
