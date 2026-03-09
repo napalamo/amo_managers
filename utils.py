@@ -31,7 +31,8 @@ def fetch_data():
             'is_distribute_top_men_leads': 'Топ Муж', 
             'is_allow_over_limit': 'Превышать лимит',
             'timezone': 'Часовой пояс'
-        }, inplace=True)        df['Активен'] = df['Активен'].astype(bool)
+        }, inplace=True)
+        df['Активен'] = df['Активен'].astype(bool)
         df['Превышать лимит'] = df['Превышать лимит'].astype(bool)
         df['Топ'] = df['Топ'].astype(bool)
         df['Топ Муж'] = df['Топ Муж'].astype(bool) 
