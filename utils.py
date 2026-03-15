@@ -18,7 +18,7 @@ def fetch_data():
     if response.status_code == 200:
         df = pd.DataFrame(response.json())
         df.rename(columns={
-            'name': 'Имя Менедж_ера', 
+            'name': 'Имя Менеджера', 
             'chat_id':'ID чата', 
             'month': 'Месяц',
             'plan': 'План',
@@ -49,7 +49,10 @@ def send_data(data_list):
 
     # Словарь для обратного переименования
     reverse_column_names = {
-        'Имя Менеджера': 'name', 
+        'Имя Менеджера': 'name',
+        'Месяц':'month',
+        'План':'plan',
+        'Факт':'fact': , 
         'Активен': 'is_active',
         'ID чата':'chat_id',
         'Лимит лидов': 'lead_count',
@@ -59,9 +62,7 @@ def send_data(data_list):
         'Топ Муж': 'is_distribute_top_men_leads',
         'Превышать лимит': 'is_allow_over_limit',
         'Часовой пояс': 'timezone',
-        'Месяц': 'month',
-        'План': 'plan',
-        'Факт': 'fact'
+
     }
     # Обновляем ключи в каждом словаре в списке
     updated_data_list = []
