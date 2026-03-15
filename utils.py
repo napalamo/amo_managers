@@ -52,7 +52,7 @@ def send_data(data_list):
         'Имя Менеджера': 'name',
         'Месяц':'month',
         'План':'plan',
-        'Факт':'fact': , 
+        'Факт':'fact' , 
         'Активен': 'is_active',
         'ID чата':'chat_id',
         'Лимит лидов': 'lead_count',
