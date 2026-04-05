@@ -30,10 +30,14 @@ def fetch_data():
             'top_men_lead_count': 'Лимит Топ Муж', 
             'is_distribute_top_men_leads': 'Топ Муж', 
             'is_allow_over_limit': 'Превышать лимит',
+            'is_allow_over_limit_top': 'Превышать лимит ТОП' ,
+            'is_allow_over_limit_topman': 'Превышать лимит МУЖ',
             'timezone': 'Часовой пояс'
         }, inplace=True)
         df['Активен'] = df['Активен'].astype(bool)
         df['Превышать лимит'] = df['Превышать лимит'].astype(bool)
+        df['Превышать лимит ТОП'] = df['Превышать лимит ТОП'].astype(bool)
+        df['Превышать лимит МУЖ'] = df['Превышать лимит МУЖ'].astype(bool)
         df['Топ'] = df['Топ'].astype(bool)
         df['Топ Муж'] = df['Топ Муж'].astype(bool) 
         df.index = range(1, len(df) + 1)
@@ -61,6 +65,8 @@ def send_data(data_list):
         'Лимит Топ Муж': 'top_men_lead_count',
         'Топ Муж': 'is_distribute_top_men_leads',
         'Превышать лимит': 'is_allow_over_limit',
+        'Превышать лимит ТОП': 'is_allow_over_limit_top',
+        'Превышать лимит МУЖ': 'is_allow_over_limit_topman',
         'Часовой пояс': 'timezone',
 
     }
