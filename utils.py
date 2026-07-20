@@ -20,16 +20,19 @@ def fetch_data():
         df.rename(columns={
             'name': 'Имя Менеджера', 
             'chat_id':'ID чата', 
-            'month': 'Месяц',
-            'plan': 'План',
-            'fact': 'Факт',
             'is_active': 'Активен', 
             'lead_count': 'Лимит лидов', 
+            'inst_form_count': 'Лимит Инста Лид-форма',
+            'is_distribute_instform_leads': 'Инста Лид-форма',
+            'inst_dialog_count': 'Лимит Инста Диалоговые',
+            'is_distribute_instdialog_leads': 'Инста Диалоговые',
             'top_lead_count': 'Лимит Топ',
             'is_distribute_top_leads': 'Топ', 
             'top_men_lead_count': 'Лимит Топ Муж', 
             'is_distribute_top_men_leads': 'Топ Муж', 
             'is_allow_over_limit': 'Превышать лимит',
+            'is_allow_over_limit_inst_form': 'Превышать лимит Инста Лид-форма',
+            'is_allow_over_limit_inst_dialog': 'Превышать лимит Инста Диалоговые',
             'is_allow_over_limit_top': 'Превышать лимит ТОП' ,
             'is_allow_over_limit_topman': 'Превышать лимит МУЖ',
             'timezone': 'Часовой пояс'
@@ -37,9 +40,13 @@ def fetch_data():
         df['Активен'] = df['Активен'].astype(bool)
         df['Превышать лимит'] = df['Превышать лимит'].astype(bool)
         df['Превышать лимит ТОП'] = df['Превышать лимит ТОП'].astype(bool)
+        df['Превышать лимит Инста Лид-форма'] = df['Превышать лимит Инста Лид-форма'].astype(bool)
+        df['Превышать лимит Инста Диалоговые'] = df['Превышать лимит Инста Диалоговые'].astype(bool)
         df['Превышать лимит МУЖ'] = df['Превышать лимит МУЖ'].astype(bool)
         df['Топ'] = df['Топ'].astype(bool)
         df['Топ Муж'] = df['Топ Муж'].astype(bool) 
+        df['Инста Лид-форма'] = df['Инста Лид-форма'].astype(bool)
+        df['Инста Диалоговые'] = df['Инста Диалоговые'].astype(bool)
         df.index = range(1, len(df) + 1)
         df.reset_index(inplace=True)
         df.rename(columns={'index': '№'}, inplace=True)
@@ -54,21 +61,26 @@ def send_data(data_list):
     # Словарь для обратного переименования
     reverse_column_names = {
         'Имя Менеджера': 'name',
-        'Месяц':'month',
-        'План':'plan',
-        'Факт':'fact' , 
+        'ID чата': 'chat_id',
         'Активен': 'is_active',
-        'ID чата':'chat_id',
         'Лимит лидов': 'lead_count',
-        'Лимит Топ': 'top_lead_count', 
-        'Топ': 'is_distribute_top_leads',     
+        'Лимит Инста Лид-форма': 'inst_form_count',
+        'Инста Лид-форма': 'is_distribute_instform_leads',
+        'Лимит Инста Диалоговые': 'inst_dialog_count',
+        'Инста Диалоговые': 'is_distribute_instdialog_leads',
+        'Лимит Топ': 'top_lead_count',
+        'Топ': 'is_distribute_top_leads',
         'Лимит Топ Муж': 'top_men_lead_count',
         'Топ Муж': 'is_distribute_top_men_leads',
         'Превышать лимит': 'is_allow_over_limit',
+        'Превышать лимит Инста Лид-форма': 'is_allow_over_limit_inst_form',
+        'Превышать лимит Инста Диалоговые': 'is_allow_over_limit_inst_dialog',
         'Превышать лимит ТОП': 'is_allow_over_limit_top',
         'Превышать лимит МУЖ': 'is_allow_over_limit_topman',
         'Часовой пояс': 'timezone',
-
+        'Месяц': 'month',
+        'План': 'plan',
+        'Факт': 'fact',
     }
     # Обновляем ключи в каждом словаре в списке
     updated_data_list = []
