@@ -78,9 +78,7 @@ def send_data(data_list):
         'Превышать лимит ТОП': 'is_allow_over_limit_top',
         'Превышать лимит МУЖ': 'is_allow_over_limit_topman',
         'Часовой пояс': 'timezone',
-        'Месяц': 'month',
-        'План': 'plan',
-        'Факт': 'fact',
+
     }
     # Обновляем ключи в каждом словаре в списке
     updated_data_list = []

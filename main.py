@@ -17,7 +17,7 @@ def main():
         edit_limits.show()
     elif page == '📈 Статистика':
         statistics.show()
-    elif page == '🔗 Ссылки':
+    elif page == '🔗 Ссылки.':
         manager_links.show()
 
 if __name__ == '__main__':
