@@ -41,7 +41,7 @@ def show():
     start_datetime = datetime.combine(start_date_value, time.min)
     end_datetime = datetime.combine(end_date_value, time.max)
     
-    lead_types = {"Обычный": "standart", "TOP": "top", "TOP MAN": "top_men", "ИНСТ лидформа": "inst_form", "ИНСТ диалоговые":"inst_dialog"}
+    lead_types = {"Обычный": "standart", "TOP": "top", "TOP MAN": "top_men"}
     
     if st.button('Получить аналитику'):
         # Отображение индикатора загрузки данных
