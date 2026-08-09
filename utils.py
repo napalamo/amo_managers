@@ -44,7 +44,7 @@ def fetch_data():
         df['Превышать лимит ИНСТ (диалоги)'] = df['Превышать лимит ИНСТ (диалоги)'].astype(bool)
         df['Превышать лимит МУЖ'] = df['Превышать лимит МУЖ'].astype(bool)
         df['ТОП'] = df['ТОП'].astype(bool)
-        df['ТОП МУЖ'] = df['ТОП Муж'].astype(bool) 
+        df['ТОП МУЖ'] = df['ТОП МУЖ'].astype(bool) 
         df['Инст ИНСТ(л/формы)'] = df['ИНСТ (л/формы)'].astype(bool)
         df['Инст (диалоги)'] = df['ИНСТ (диалоги)'].astype(bool)
         df.index = range(1, len(df) + 1)
