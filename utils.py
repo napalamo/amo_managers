@@ -21,18 +21,18 @@ def fetch_data():
             'name': 'Имя Менеджера', 
             'chat_id':'ID чата', 
             'is_active': 'Активен', 
-            'lead_count': 'Лимит лидов', 
-            'inst_form_count': 'Лимит Инст\n(л/формы)',
-            'is_distribute_instform_leads': 'Инст\n(л/формы)',
-            'inst_dialog_count': 'Лимит Инст\n(диалоги)',
-            'is_distribute_instdialog_leads': 'Инст\n(диалоги)',
-            'top_lead_count': 'Лимит Топ',
-            'is_distribute_top_leads': 'Топ', 
-            'top_men_lead_count': 'Лимит Топ Муж', 
-            'is_distribute_top_men_leads': 'Топ Муж', 
+            'lead_count': 'Лимит лидов (кроме инст)', 
+            'inst_form_count': 'Лимит ИНСТ (л/формы)',
+            'is_distribute_instform_leads': 'ИНСТ (л/формы)',
+            'inst_dialog_count': 'Лимит ИНСТ (диалоги)',
+            'is_distribute_instdialog_leads': 'ИНСТ (диалоги)',
+            'top_lead_count': 'Лимит ТОП (весь трафик)',
+            'is_distribute_top_leads': 'ТОП', 
+            'top_men_lead_count': 'Лимит ТОП МУЖ (весь трафик)', 
+            'is_distribute_top_men_leads': 'ТОП МУЖ', 
             'is_allow_over_limit': 'Превышать лимит',
-            'is_allow_over_limit_inst_form': 'Превышать лимит\nИнст (л/формы)',
-            'is_allow_over_limit_inst_dialog': 'Превышать лимит\nИнст (диалоги)',
+            'is_allow_over_limit_inst_form': 'Превышать лимит ИНСТ (л/формы)',
+            'is_allow_over_limit_inst_dialog': 'Превышать лимит ИНСТ (диалоги)',
             'is_allow_over_limit_top': 'Превышать лимит ТОП' ,
             'is_allow_over_limit_topman': 'Превышать лимит МУЖ',
             'timezone': 'Часовой пояс'
@@ -40,13 +40,13 @@ def fetch_data():
         df['Активен'] = df['Активен'].astype(bool)
         df['Превышать лимит'] = df['Превышать лимит'].astype(bool)
         df['Превышать лимит ТОП'] = df['Превышать лимит ТОП'].astype(bool)
-        df['Превышать лимит\nИнст (л/формы)'] = df['Превышать лимит\nИнст (л/формы)'].astype(bool)
-        df['Превышать лимит\nИнст (диалоги)'] = df['Превышать лимит\nИнст (диалоги)'].astype(bool)
+        df['Превышать лимит ИНСТ (л/формы)'] = df['Превышать лимит ИНСТ (л/формы)'].astype(bool)
+        df['Превышать лимит ИНСТ (диалоги)'] = df['Превышать лимит ИНСТ (диалоги)'].astype(bool)
         df['Превышать лимит МУЖ'] = df['Превышать лимит МУЖ'].astype(bool)
         df['Топ'] = df['Топ'].astype(bool)
-        df['Топ Муж'] = df['Топ Муж'].astype(bool) 
-        df['Инст\n(л/формы)'] = df['Инст\n(л/формы)'].astype(bool)
-        df['Инст\n(диалоги)'] = df['Инст\n(диалоги)'].astype(bool)
+        df['Топ МУЖ'] = df['Топ Муж'].astype(bool) 
+        df['Инст ИНСТ(л/формы)'] = df['ИНСТ (л/формы)'].astype(bool)
+        df['Инст (диалоги)'] = df['ИНСТ (диалоги)'].astype(bool)
         df.index = range(1, len(df) + 1)
         df.reset_index(inplace=True)
         df.rename(columns={'index': '№'}, inplace=True)

@@ -4,6 +4,16 @@ from utils import fetch_data, send_data, find_changes, mustAssigment
 
 def show():
     st.title('Управление списком менеджеров')
+    st.markdown("""
+        <style>
+        .stDataFrame thead tr th {
+            white-space: pre-wrap !important;
+            word-wrap: break-word !important;
+            min-width: 80px !important;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
 
     col1, col2, col3 = st.columns([1, 1, 2])
     with col1:
