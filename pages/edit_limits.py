@@ -9,7 +9,7 @@ def show():
         .stDataFrame thead tr th {
             white-space: pre-wrap !important;
             word-wrap: break-word !important;
-            min-width: 80px !important;
+            max-width: 80px !important;
         }
         </style>
     """, unsafe_allow_html=True)
