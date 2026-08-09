@@ -22,7 +22,7 @@ def fetch_data():
             'chat_id':'ID чата', 
             'is_active': 'Активен', 
             'lead_count': 'Лимит лидов<br>(кроме инст)', 
-            'inst_form_count': 'Лимит ИНСТ (л/формы)',
+            'inst_form_count': 'Лимит ИНСТ\n(л/формы)',
             'is_distribute_instform_leads': 'ИНСТ (л/формы)',
             'inst_dialog_count': 'Лимит ИНСТ (диалоги)',
             'is_distribute_instdialog_leads': 'ИНСТ (диалоги)',
