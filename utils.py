@@ -70,7 +70,7 @@ def send_data(data_list):
         'ИНСТ (диалоги)': 'is_distribute_instdialog_leads',
         'Лимит ТОП (весь трафик)': 'top_lead_count',
         'ТОП': 'is_distribute_top_leads',
-        'Лимит ТОП МУЖ': 'top_men_lead_count',
+        'Лимит ТОП МУЖ (весь трафик)': 'top_men_lead_count',
         'ТОП МУЖ': 'is_distribute_top_men_leads',
         'Превышать лимит': 'is_allow_over_limit',
         'Превышать лимит ИНСТ (л/формы)': 'is_allow_over_limit_inst_form',
