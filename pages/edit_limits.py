@@ -31,8 +31,8 @@ def show():
         
         # Рассчитываем высоту на основе количества строк в данных
         num_rows = data_to_display.shape[0]
-        row_height = 45  # Высота одной строки в пикселях (примерная)
-        total_height = num_rows * row_height + 45  # Добавляем 35 пикселей для заголовка
+        row_height = 35  # Высота одной строки в пикселях (примерная)
+        total_height = num_rows * row_height + 35  # Добавляем 35 пикселей для заголовка
 
         # Показываем редактор данных с динамической высотой
         edited_data = st.data_editor(data_to_display, height=total_height, hide_index=True)
