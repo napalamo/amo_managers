@@ -37,6 +37,7 @@ def fetch_data():
             'is_allow_over_limit_topman': 'Превышать лимит МУЖ',
             'timezone': 'Часовой пояс'
         }, inplace=True)
+        df = df.sort_values(by='Активен', ascending=False)
         df['Активен'] = df['Активен'].astype(bool)
         df['Превышать лимит'] = df['Превышать лимит'].astype(bool)
         df['Превышать лимит ТОП'] = df['Превышать лимит ТОП'].astype(bool)
