@@ -50,7 +50,7 @@ def fetch_data():
         df.index = range(1, len(df) + 1)
         df.reset_index(inplace=True)
         df.rename(columns={'index': '№'}, inplace=True)
-        return dict(sorted(df, key=lambda x: x['Активен'], reverse=True))
+        return dict(sorted(df.items(), key=lambda x: x['Активен'], reverse=True))
 
         #return df
     else:
