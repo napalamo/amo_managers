@@ -50,9 +50,9 @@ def fetch_data():
         df.index = range(1, len(df) + 1)
         df.reset_index(inplace=True)
         df.rename(columns={'index': '№'}, inplace=True)
-        #return dict(sorted(df.items(), key=lambda item: item[1], reverse=True))
+        return dict(sorted(df, key=lambda x: x['Активен'], reverse=True))
 
-        return df
+        #return df
     else:
         st.error('Ошибка при получении данных')
         return pd.DataFrame()
