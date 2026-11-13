@@ -15,19 +15,19 @@ COLUMN_LABELS = {
     'lead_count': COLUMN_LABEL_LIMIT_CNT,
     'is_allow_over_limit': COLUMN_LABEL_ALLOW,
 
-    'is_distribute_top_leads': 'ТОП',
+    'is_distribute_top_leads': '👨‍💼ТОП',
     'top_lead_count': COLUMN_LABEL_LIMIT_CNT,
     'is_allow_over_limit_top': COLUMN_LABEL_ALLOW,
 
-    'is_distribute_top_men_leads': 'ТОП МУЖ',
+    'is_distribute_top_men_leads': '👨‍💼ТОП МУЖ',
     'top_men_lead_count': COLUMN_LABEL_LIMIT_CNT,
     'is_allow_over_limit_topman': COLUMN_LABEL_ALLOW,
 
-    'is_distribute_instform_leads': 'ИНСТ л/формы',
+    'is_distribute_instform_leads': '👨‍💼ИНСТ л/формы',
     'inst_form_count': COLUMN_LABEL_LIMIT_CNT,
     'is_allow_over_limit_inst_form': COLUMN_LABEL_ALLOW,
 
-    'is_distribute_instdialog_leads': 'ИНСТ диалоги',
+    'is_distribute_instdialog_leads': '👨‍💼ИНСТ диалоги',
     'inst_dialog_count': COLUMN_LABEL_LIMIT_CNT,
     'is_allow_over_limit_inst_dialog': COLUMN_LABEL_ALLOW,
 
@@ -35,11 +35,24 @@ COLUMN_LABELS = {
 }
 
 COLUMN_HELPS = {
-    'lead_count': 'Лимит лидов (кроме инст)',
+    'lead_count': 'Лимит лидов (кроме Instagram)',
+    'is_allow_over_limit': 'Превышать лимит',
+
     'is_distribute_top_leads': 'ТОП (весь трафик)',
+    'top_lead_count': 'Лимит ТОП (весь трафик)',
+    'is_allow_over_limit_top': 'Превышать лимит ТОП',
+
     'is_distribute_top_men_leads': 'ТОП Мужчины (весь трафик)',
+    'top_men_lead_count': 'Лимит ТОП Мужчины (весь трафик)',
+    'is_allow_over_limit_topman': 'Превышать лимит МУЖ',
+
     'is_distribute_instform_leads': 'Instagram лид-формы',
+    'inst_form_count': 'Лимит Instagram лид-формы',
+    'is_allow_over_limit_inst_form': 'Превышать лимит Instagram лид-формы',
+
     'is_distribute_instdialog_leads': 'Instagram диалоговые лиды',
+    'inst_dialog_count': 'Лимит Instagram диалоговые лиды',
+    'is_allow_over_limit_inst_dialog': 'Превышать лимит Instagram диалоговые лиды',
 }
 
 COLUMN_WIDTH_GROUP_NAME = 160
