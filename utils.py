@@ -20,21 +20,27 @@ def fetch_data():
         df.rename(columns={
             'name': 'Имя Менеджера', 
             'chat_id':'ID чата', 
-            'is_active': 'Активен', 
-            'lead_count': 'Лимит лидов (кроме инст)', 
+            'is_active': 'Активен',
+
+            'lead_count': 'Лимит лидов (кроме инст)',
+            'is_allow_over_limit': 'Превышать лимит',
+
+            'top_lead_count': 'Лимит ТОП (весь трафик)',
+            'is_distribute_top_leads': 'ТОП',
+            'is_allow_over_limit_top': 'Превышать лимит ТОП',
+
+            'top_men_lead_count': 'Лимит ТОП МУЖ (весь трафик)',
+            'is_distribute_top_men_leads': 'ТОП МУЖ',
+            'is_allow_over_limit_topman': 'Превышать лимит МУЖ',
+
             'inst_form_count': 'Лимит ИНСТ (л/формы)',
             'is_distribute_instform_leads': 'ИНСТ (л/формы)',
+            'is_allow_over_limit_inst_form': 'Превышать лимит ИНСТ (л/формы)',
+
             'inst_dialog_count': 'Лимит ИНСТ (диалоги)',
             'is_distribute_instdialog_leads': 'ИНСТ (диалоги)',
-            'top_lead_count': 'Лимит ТОП (весь трафик)',
-            'is_distribute_top_leads': 'ТОП', 
-            'top_men_lead_count': 'Лимит ТОП МУЖ (весь трафик)', 
-            'is_distribute_top_men_leads': 'ТОП МУЖ', 
-            'is_allow_over_limit': 'Превышать лимит',
-            'is_allow_over_limit_inst_form': 'Превышать лимит ИНСТ (л/формы)',
             'is_allow_over_limit_inst_dialog': 'Превышать лимит ИНСТ (диалоги)',
-            'is_allow_over_limit_top': 'Превышать лимит ТОП' ,
-            'is_allow_over_limit_topman': 'Превышать лимит МУЖ',
+
             'timezone': 'Часовой пояс'
         }, inplace=True)
         
