@@ -17,46 +17,21 @@ def fetch_data():
     response = requests.post(API_FETCH_URL)
     if response.status_code == 200:
         df = pd.DataFrame(response.json())
-        df.rename(columns={
-            'name': 'Имя Менеджера', 
-            'chat_id':'ID чата', 
-            'is_active': 'Активен',
-
-            'lead_count': 'Лимит лидов (кроме инст)',
-            'is_allow_over_limit': 'Превышать лимит',
-
-            'top_lead_count': 'Лимит ТОП (весь трафик)',
-            'is_distribute_top_leads': 'ТОП',
-            'is_allow_over_limit_top': 'Превышать лимит ТОП',
-
-            'top_men_lead_count': 'Лимит ТОП МУЖ (весь трафик)',
-            'is_distribute_top_men_leads': 'ТОП МУЖ',
-            'is_allow_over_limit_topman': 'Превышать лимит МУЖ',
-
-            'inst_form_count': 'Лимит ИНСТ (л/формы)',
-            'is_distribute_instform_leads': 'ИНСТ (л/формы)',
-            'is_allow_over_limit_inst_form': 'Превышать лимит ИНСТ (л/формы)',
-
-            'inst_dialog_count': 'Лимит ИНСТ (диалоги)',
-            'is_distribute_instdialog_leads': 'ИНСТ (диалоги)',
-            'is_allow_over_limit_inst_dialog': 'Превышать лимит ИНСТ (диалоги)',
-
-            'timezone': 'Часовой пояс'
-        }, inplace=True)
-        
-        df['Активен'] = df['Активен'].astype(bool)
-        df['Превышать лимит'] = df['Превышать лимит'].astype(bool)
-        df['Превышать лимит ТОП'] = df['Превышать лимит ТОП'].astype(bool)
-        df['Превышать лимит ИНСТ (л/формы)'] = df['Превышать лимит ИНСТ (л/формы)'].astype(bool)
-        df['Превышать лимит ИНСТ (диалоги)'] = df['Превышать лимит ИНСТ (диалоги)'].astype(bool)
-        df['Превышать лимит МУЖ'] = df['Превышать лимит МУЖ'].astype(bool)
-        df['ТОП'] = df['ТОП'].astype(bool)
-        df['ТОП МУЖ'] = df['ТОП МУЖ'].astype(bool) 
-        df['ИНСТ (л/формы)'] = df['ИНСТ (л/формы)'].astype(bool)
-        df['ИНСТ (диалоги)'] = df['ИНСТ (диалоги)'].astype(bool)
-        df.index = range(1, len(df) + 1)
-        df.reset_index(inplace=True)
-        df.rename(columns={'index': '№'}, inplace=True)
+        boolean_columns = [
+            'is_active',
+            'is_allow_over_limit',
+            'is_allow_over_limit_top',
+            'is_allow_over_limit_inst_form',
+            'is_allow_over_limit_inst_dialog',
+            'is_allow_over_limit_topman',
+            'is_distribute_top_leads',
+            'is_distribute_top_men_leads',
+            'is_distribute_instform_leads',
+            'is_distribute_instdialog_leads',
+        ]
+        for column in boolean_columns:
+            if column in df.columns:
+                df[column] = df[column].astype(bool)
         return df
     else:
         st.error('Ошибка при получении данных')
@@ -65,38 +40,8 @@ def fetch_data():
 # Функция для отправки измененных данных обратно на сервер
 def send_data(data_list):
 
-    # Словарь для обратного переименования
-    reverse_column_names = {
-        'Имя Менеджера': 'name',
-        'ID чата': 'chat_id',
-        'Активен': 'is_active',
-        'Лимит лидов (кроме инст)': 'lead_count',
-        'Лимит ИНСТ (л/формы)': 'inst_form_count',
-        'ИНСТ (л/формы)': 'is_distribute_instform_leads',
-        'Лимит ИНСТ (диалоги)': 'inst_dialog_count',
-        'ИНСТ (диалоги)': 'is_distribute_instdialog_leads',
-        'Лимит ТОП (весь трафик)': 'top_lead_count',
-        'ТОП': 'is_distribute_top_leads',
-        'Лимит ТОП МУЖ (весь трафик)': 'top_men_lead_count',
-        'ТОП МУЖ': 'is_distribute_top_men_leads',
-        'Превышать лимит': 'is_allow_over_limit',
-        'Превышать лимит ИНСТ (л/формы)': 'is_allow_over_limit_inst_form',
-        'Превышать лимит ИНСТ (диалоги)': 'is_allow_over_limit_inst_dialog',
-        'Превышать лимит ТОП': 'is_allow_over_limit_top',
-        'Превышать лимит МУЖ': 'is_allow_over_limit_topman',
-        'Часовой пояс': 'timezone',
+    json_data = json.dumps(data_list)
 
-    }
-    # Обновляем ключи в каждом словаре в списке
-    updated_data_list = []
-    for item in data_list:
-        updated_item = {reverse_column_names.get(k, k): v for k, v in item.items()}
-        updated_data_list.append(updated_item)
-
-    # Отправляем обновлённые данные
-    # Сериализуем список словарей в строку JSON
-    json_data = json.dumps(updated_data_list)
-    
     # Отправляем строку JSON как form-data
     response = requests.post(API_UPDATE_URL, data={'data': json_data})
 
