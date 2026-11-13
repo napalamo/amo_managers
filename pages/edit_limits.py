@@ -4,25 +4,62 @@ from utils import fetch_data, send_data, find_changes, mustAssigment
 
 
 # Ключи API сохраняются в данных, русские названия задаются только для интерфейса.
+COLUMN_LABEL_LIMIT_CNT = 'Лимит'
+COLUMN_LABEL_ALLOW = 'Превышать'
+
 COLUMN_LABELS = {
     'name': 'Имя Менеджера',
     'chat_id': 'ID чата',
+
     'is_active': 'Активен',
-    'lead_count': 'Лимит лидов (кроме инст)',
-    'is_allow_over_limit': 'Превышать лимит',
+    'lead_count': COLUMN_LABEL_LIMIT_CNT,
+    'is_allow_over_limit': COLUMN_LABEL_ALLOW,
+
     'is_distribute_top_leads': 'ТОП',
-    'top_lead_count': 'Лимит ТОП (весь трафик)',
-    'is_allow_over_limit_top': 'Превышать лимит ТОП',
+    'top_lead_count': COLUMN_LABEL_LIMIT_CNT,
+    'is_allow_over_limit_top': COLUMN_LABEL_ALLOW,
+
     'is_distribute_top_men_leads': 'ТОП МУЖ',
-    'top_men_lead_count': 'Лимит ТОП МУЖ (весь трафик)',
-    'is_allow_over_limit_topman': 'Превышать лимит МУЖ',
-    'is_distribute_instform_leads': 'ИНСТ (л/формы)',
-    'inst_form_count': 'Лимит ИНСТ (л/формы)',
-    'is_allow_over_limit_inst_form': 'Превышать лимит ИНСТ (л/формы)',
-    'is_distribute_instdialog_leads': 'ИНСТ (диалоги)',
-    'inst_dialog_count': 'Лимит ИНСТ (диалоги)',
-    'is_allow_over_limit_inst_dialog': 'Превышать лимит ИНСТ (диалоги)',
+    'top_men_lead_count': COLUMN_LABEL_LIMIT_CNT,
+    'is_allow_over_limit_topman': COLUMN_LABEL_ALLOW,
+
+    'is_distribute_instform_leads': 'ИНСТ л/формы',
+    'inst_form_count': COLUMN_LABEL_LIMIT_CNT,
+    'is_allow_over_limit_inst_form': COLUMN_LABEL_ALLOW,
+
+    'is_distribute_instdialog_leads': 'ИНСТ диалоги',
+    'inst_dialog_count': COLUMN_LABEL_LIMIT_CNT,
+    'is_allow_over_limit_inst_dialog': COLUMN_LABEL_ALLOW,
+
     'timezone': 'Часовой пояс',
+}
+
+COLUMN_HELPS = {
+    'lead_count': 'Лимит лидов (кроме инст)',
+    'is_distribute_top_leads': 'ТОП (весь трафик)',
+    'is_distribute_top_men_leads': 'ТОП Мужчины (весь трафик)',
+    'is_distribute_instform_leads': 'Instagram лид-формы',
+    'is_distribute_instdialog_leads': 'Instagram диалоговые лиды',
+}
+
+COLUMN_WIDTH_ALLOW = 160
+COLUMN_WIDTH_LIMIT_CNT = 80
+
+COLUMN_WIDTHS = {
+    'lead_count': COLUMN_WIDTH_LIMIT_CNT,
+    'is_allow_over_limit': COLUMN_WIDTH_ALLOW,
+
+    'top_lead_count': COLUMN_WIDTH_LIMIT_CNT,
+    'is_allow_over_limit_top': COLUMN_WIDTH_ALLOW,
+
+    'top_men_lead_count': COLUMN_WIDTH_LIMIT_CNT,
+    'is_allow_over_limit_topman': COLUMN_WIDTH_ALLOW,
+
+    'inst_form_count': COLUMN_WIDTH_LIMIT_CNT,
+    'is_allow_over_limit_inst_form': COLUMN_WIDTH_ALLOW,
+
+    'inst_dialog_count': COLUMN_WIDTH_LIMIT_CNT,
+    'is_allow_over_limit_inst_dialog': COLUMN_WIDTH_ALLOW,
 }
 
 
@@ -58,16 +95,17 @@ def show():
         total_height = num_rows * row_height + 35
 
         column_config = {
-            column: st.column_config.Column(label=label)
+            column: st.column_config.Column(
+                label=label,
+                help=COLUMN_HELPS.get(column),
+                width=COLUMN_WIDTHS.get(column),
+            )
             for column, label in COLUMN_LABELS.items()
         }
+
         column_config['row_number'] = st.column_config.NumberColumn(
-            label='№', disabled=True,
-        )
-        column_config['is_allow_over_limit_inst_form'] = st.column_config.CheckboxColumn(
-            label='Превышать ИНСТ л/ф',
-            width=160,
-            help=COLUMN_LABELS['is_allow_over_limit_inst_form'],
+            label='№',
+            disabled=True,
         )
 
         edited_data = st.data_editor(
