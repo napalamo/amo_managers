@@ -42,22 +42,28 @@ COLUMN_HELPS = {
     'is_distribute_instdialog_leads': 'Instagram диалоговые лиды',
 }
 
-COLUMN_WIDTH_ALLOW = 160
+COLUMN_WIDTH_GROUP_NAME = 160
+COLUMN_WIDTH_ALLOW = 80
 COLUMN_WIDTH_LIMIT_CNT = 80
 
 COLUMN_WIDTHS = {
+    'is_active': COLUMN_WIDTH_GROUP_NAME,
     'lead_count': COLUMN_WIDTH_LIMIT_CNT,
     'is_allow_over_limit': COLUMN_WIDTH_ALLOW,
 
+    'is_distribute_top_leads': COLUMN_WIDTH_GROUP_NAME,
     'top_lead_count': COLUMN_WIDTH_LIMIT_CNT,
     'is_allow_over_limit_top': COLUMN_WIDTH_ALLOW,
 
+    'is_distribute_top_men_leads': COLUMN_WIDTH_GROUP_NAME,
     'top_men_lead_count': COLUMN_WIDTH_LIMIT_CNT,
     'is_allow_over_limit_topman': COLUMN_WIDTH_ALLOW,
 
+    'is_distribute_instform_leads': COLUMN_WIDTH_GROUP_NAME,
     'inst_form_count': COLUMN_WIDTH_LIMIT_CNT,
     'is_allow_over_limit_inst_form': COLUMN_WIDTH_ALLOW,
 
+    'is_distribute_instdialog_leads': COLUMN_WIDTH_GROUP_NAME,
     'inst_dialog_count': COLUMN_WIDTH_LIMIT_CNT,
     'is_allow_over_limit_inst_dialog': COLUMN_WIDTH_ALLOW,
 }
