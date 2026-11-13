@@ -105,6 +105,7 @@ def show():
                 label=label,
                 help=COLUMN_HELPS.get(column),
                 width=COLUMN_WIDTHS.get(column),
+                pinned=(column == 'name'),
             )
             for column, label in COLUMN_LABELS.items()
         }
@@ -112,6 +113,7 @@ def show():
         column_config['row_number'] = st.column_config.NumberColumn(
             label='№',
             disabled=True,
+            pinned=True,
         )
 
         edited_data = st.data_editor(
